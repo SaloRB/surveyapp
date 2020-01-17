@@ -7,7 +7,7 @@
 
             <h1>{{ $questionnaire->title }}</h1>
 
-            <h3>{{ $questionnaire->purpose }}</h3>
+            <h5>{{ $questionnaire->purpose }}</h5>
 
             <form action="/surveys/{{ $questionnaire->id }}-{{ Str::slug($questionnaire->title) }}" method="post">
                 @csrf
@@ -48,10 +48,10 @@
                         <div class="form-group">
                             <label for="name">Your Name</label>
                             <input name="survey[name]" type="text" class="form-control" id="name"
-                                aria-describedby="nameHelp" placeholder="Enter Name">
+                                aria-describedby="nameHelp" placeholder="Enter Name" value="{{ old('survey.name') }}">
                             <small id="nameHelp" class="form-text text-muted">Hello! What's your name?</small>
 
-                            @error('name')
+                            @error('survey.name')
                             <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
@@ -59,9 +59,10 @@
                         <div class="form-group">
                             <label for="email">Your Email</label>
                             <input name="survey[email]" type="email" class="form-control" id="email"
-                                aria-describedby="emailHelp" placeholder="Enter Email">
+                                aria-describedby="emailHelp" placeholder="Enter Email"
+                                value="{{ old('survey.email') }}">
                             <small id="emailHelp" class="form-text text-muted">Your Email Please!</small>
-                            @error('email')
+                            @error('survey.email')
                             <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
