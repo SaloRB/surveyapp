@@ -22,10 +22,10 @@
                         <small class="text-danger">{{ $message }}</small>
                         @enderror
 
-                        <ul class="list-group">
+                        <ul class="list-group list-survey" id="question{{ $question->id }}">
                             @foreach ($question->answers as $answer)
                             <label for="answer{{ $answer->id }}">
-                                <li class="list-group-item">
+                                <li class="list-group-item list-group-item-action">
                                     <input type="radio" name="responses[{{ $key }}][answer_id]"
                                         id="answer{{ $answer->id }}" class="mr-2" value="{{ $answer->id }}"
                                         {{ (old('responses.' . $key . '.answer_id') == $answer->id) ? 'checked' : '' }}>
