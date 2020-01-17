@@ -7,12 +7,12 @@
             <div class="card">
                 <div class="card-header">{{ $questionnaire->title }}</div>
 
-                <div class="card-body">
-                    <a class="btn btn-dark" href="{{ $questionnaire->path() }}/questions/create">Add New
+                <div class="card-body d-flex justify-content-between">
+                    <a class="btn btn-dark mx-1" href="{{ $questionnaire->path() }}/questions/create">Add New
                         Question</a>
 
                     @if ($questionnaire->questions->count() > 0)
-                    <a class="btn btn-dark"
+                    <a class="btn btn-dark mx-1"
                         href="/surveys/{{ $questionnaire->id }}-{{ Str::slug($questionnaire->title) }}">Take
                         Survey</a>
                     @endif
@@ -46,7 +46,11 @@
                     </ul>
                 </div>
 
-                <div class="card-footer">
+                <div class="card-footer d-flex justify-content-between">
+                    <a class="btn btn-sm btn-outline-success"
+                        href="/questionnaires/{{ $questionnaire->id }}/questions/{{ $question->id }}/edit">Edit
+                        Question</a>
+
                     <form action="/questionnaires/{{ $questionnaire->id }}/questions/{{ $question->id }}" method="post">
                         @method('DELETE')
                         @csrf
