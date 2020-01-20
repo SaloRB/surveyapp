@@ -15,11 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/questionnaires/create', 'QuestionnaireController@create');
+Route::get('/questionnaires/create', 'QuestionnaireController@create')->middleware('verified');
 Route::post('/questionnaires', 'QuestionnaireController@store');
 Route::get('/questionnaires/{questionnaire}', 'QuestionnaireController@show');
 Route::delete('questionnaires/{questionnaire}', 'QuestionnaireController@destroy');
