@@ -37076,13 +37076,19 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // $(document).ready(function() {
 
+
+$("input[type=radio]").each(function () {
+  if ($(this).attr("checked")) {
+    $(this).parent().addClass("active");
+  }
+});
 $(document).on("click", ".list-survey li", function () {
   $parentId = $(this).closest("ul").attr("id");
   $("#" + $parentId + " li").removeClass("active");
   $(this).addClass("active");
-});
+}); // });
 
 /***/ }),
 
@@ -37149,8 +37155,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Salo\Desktop\Laravel\surveyapp\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Salo\Desktop\Laravel\surveyapp\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Laravel\surveyapp\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Laravel\surveyapp\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
