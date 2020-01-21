@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Questionnaire;
+use App\Mail\WelcomeMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class QuestionnaireController extends Controller
 {
@@ -25,6 +27,8 @@ class QuestionnaireController extends Controller
         ]);
 
         $questionnaire = auth()->user()->questionnaires()->create($data);
+
+        // Mail::to(auth()->user()->email)->send(new WelcomeMail($questionnaire));
 
         return redirect('/questionnaires/' . $questionnaire->id);
     }
